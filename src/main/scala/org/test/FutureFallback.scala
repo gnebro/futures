@@ -45,10 +45,9 @@ object FutureFallback {
   }
 
   def recoverNoMatch: Future[String] = {
-    val pio = Future.failed(FailureExceptionCause) recover {
+    Future.failed(FailureExceptionCause) recover {
       case e: AbstractMethodError => "should not have recovered"
     }
-    pio
   }
 
 
